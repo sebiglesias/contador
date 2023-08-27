@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<!-- Make a html site to add players, and be able to add points to players, also show the previouslya dded points and the current sum of them, also a way to clear and re-choose players again,  -->
+
+<div>
+  <label for="playerName">Player Name</label>
+  <input type="text" id="playerName" placeholder="Player Name" />
+  <button id="addPlayer" onclick="addPlayer(
+    document.getElementById('playerName').value
+  )">Add Player</button>
+</div>
+<div>
+  <!-- Show players and their points in vertical columns, show the sum of the points at the top right beneath the player and previous points in strikethrough text -->
+  <div id="players"></div>
+</div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
