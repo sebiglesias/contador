@@ -2,6 +2,22 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register("/serviceworker.js");
 }
 
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  deferredPrompt = e;
+});
+
+const installApp = document.getElementById('installApp');
+installApp.addEventListener('click', async () => {
+  if (deferredPrompt !== null) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      deferredPrompt = null;
+    }
+  }
+});
+
 const players = []
 
 function addPlayer(name) {
