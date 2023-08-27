@@ -16,11 +16,14 @@
 
 <body>
   <div class="add-player">
-    <label for="playerName">Player Name</label>
-    <input type="text" id="playerName" placeholder="Player Name" />
+    <div>
+      <label for="playerName">Player Name</label>
+      <input type="text" id="playerName" placeholder="Player Name" />
+    </div>
     <button id="addPlayer" onclick="addPlayer(
       document.getElementById('playerName').value
     )">Add Player</button>
+    <button id="clearPlayers" onclick="clearPlayers()">Clear Players</button>
   </div>
   <div id="players"></div>
 

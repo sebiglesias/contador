@@ -7,7 +7,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredPrompt = e;
 });
 
-const players = []
+let players = []
+
+function clearPlayers() {
+  players = []
+  render()
+}
 
 function addPlayer(name) {
   players.push({ name, score: 0, points: [] })
