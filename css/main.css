@@ -295,12 +295,6 @@ textarea {
   text-decoration: none;
 }
 
-.add-points {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 #addPlayer #clearPlayers {
   background-color: #007bff;
   color: #fff;

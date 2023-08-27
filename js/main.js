@@ -15,11 +15,13 @@ function clearPlayers() {
 }
 
 function addPlayer(name) {
+  if (name.length === 0 || players.find(p => p.name === name)) return
   players.push({ name, score: 0, points: [] })
   render()
 }
 
 function addPoints(playerName, points) {
+  if (points === 0 || isNaN(points)) return
   const player = players.find(p => p.name === playerName)
   player.points.push(points)
   player.score += points
@@ -34,10 +36,8 @@ function render() {
       <div class="name">${player.name}</div>
       <div class="score">${player.score}</div>
       <div class="points">${player.points.map(points => `<div class="points">${points}</div>`).join('')}</div>
-      <div class="add-points">
-        <input type="number" id="points-${index}" />
-        <button onclick="addPoints('${player.name}', parseInt(document.getElementById('points-${index}').value))">Add points</button>
-      </div>
+      <input type="number" id="points-${index}" />
+      <button onclick="addPoints('${player.name}', parseInt(document.getElementById('points-${index}').value))">Add points</button>
     </div>
   `).join('')
 }
