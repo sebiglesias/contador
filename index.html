@@ -15,18 +15,14 @@
 </head>
 
 <body>
-<!-- add css to improve the page -->
-<div class="add-player">
-  <label for="playerName">Player Name</label>
-  <input type="text" id="playerName" placeholder="Player Name" />
-  <button id="addPlayer" onclick="addPlayer(
-    document.getElementById('playerName').value
-  )">Add Player</button>
-</div>
-<div>
-  <!-- Show players and their points in vertical columns, show the sum of the points at the top right beneath the player and previous points in strikethrough text -->
+  <div class="add-player">
+    <label for="playerName">Player Name</label>
+    <input type="text" id="playerName" placeholder="Player Name" />
+    <button id="addPlayer" onclick="addPlayer(
+      document.getElementById('playerName').value
+    )">Add Player</button>
+  </div>
   <div id="players"></div>
-</div>
 
   <script src="js/main.js"></script>
 </body>
