@@ -14,6 +14,11 @@ function clearPlayers() {
   render()
 }
 
+function clearAllPoints() {
+  players = players.map((p) => ({ name: p.name, points: [], score: 0}))
+  render()
+}
+
 function addPlayer(name) {
   if (name.length === 0 || players.find(p => p.name === name)) return
   players.push({ name, score: 0, points: [] })
