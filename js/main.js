@@ -41,7 +41,7 @@ function render() {
       <div class="name">${player.name}</div>
       <div class="score">${player.score}</div>
       <div class="points">${player.points.map(points => `<div class="points">${points}</div>`).join('')}</div>
-      <input type="number" pattern="-?[0-9]" inputmode="numeric" id="points-${index}" />
+      <input type="number" pattern="-?[0-9]\.?[0-9]*" inputmode="decimal" id="points-${index}" />
       <button onclick="addPoints('${player.name}', parseInt(document.getElementById('points-${index}').value))">Add points</button>
     </div>
   `).join('')
