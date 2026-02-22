@@ -90,8 +90,313 @@ textarea {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Author's custom styles — modern mobile-first redesign
    ========================================================================== */
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface2: #242424;
+  --border: #2e2e2e;
+  --text: #f0f0f0;
+  --text-muted: #888;
+  --accent: #6c63ff;
+  --accent-hover: #574fd6;
+  --danger: #ff4d4d;
+  --success: #22c55e;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ── App shell ── */
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px 16px 80px;
+}
+
+/* ── Header ── */
+.app-header {
+  text-align: center;
+  padding: 20px 0 8px;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ── Add player section ── */
+.add-player-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.add-player-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.add-player-row input {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.add-player-row input:focus {
+  border-color: var(--accent);
+}
+
+.add-player-row input::placeholder {
+  color: var(--text-muted);
+}
+
+.add-player-row button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.add-player-row button:hover {
+  background: var(--accent-hover);
+}
+
+.danger-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-ghost {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-ghost:hover {
+  background: transparent;
+  border-color: #555;
+  color: var(--text);
+}
+
+.btn-danger {
+  color: var(--danger);
+  border-color: #3a1a1a;
+}
+
+.btn-danger:hover {
+  background: transparent;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ── Leaderboard ── */
+#leaderboard {
+  margin-bottom: 16px;
+}
+
+.leaderboard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.leaderboard-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboard-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.leaderboard-medal { font-size: 1.1rem; }
+
+.leaderboard-name {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-score {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+/* ── Players grid ── */
+#players {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+/* ── Player card ── */
+.player {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.score {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.points > .points {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 1px 0;
+}
+
+.history-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.history-btn:hover {
+  background: transparent;
+  color: var(--text);
+  border-color: #555;
+}
+
+.player-input-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.player-input-row input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 8px 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.player-input-row input:focus {
+  border-color: var(--accent);
+}
+
+.player-input-row button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.player-input-row button:hover {
+  background: var(--accent-hover);
+}
 
 /* ==========================================================================
    Helper classes
@@ -267,140 +572,4 @@ textarea {
   }
 }
 
-#leaderboard {
-  margin-bottom: 16px;
-}
 
-.leaderboard {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px 16px;
-  display: inline-block;
-  min-width: 200px;
-}
-
-.leaderboard-title {
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #888;
-  margin-bottom: 8px;
-}
-
-.leaderboard-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 3px 0;
-}
-
-.leaderboard-medal {
-  font-size: 1.1rem;
-}
-
-.leaderboard-name {
-  flex: 1;
-  font-size: 0.95rem;
-}
-
-.leaderboard-score {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-}
-
-.player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 10px;
-  gap: 5px;
-}
-
-.name {
-  font-size: 20px;
-  font-weight: bold;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.score {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.points {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: line-through;
-}
-
-.points .points {
-  text-decoration: none;
-}
-
-#addPlayer #clearPlayers {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-
-.add-player, .player {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.history-btn {
-  background: none;
-  color: #888;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.history-btn:hover {
-  background: none;
-  color: #555;
-  border-color: #999;
-}
-
-#playerName {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}

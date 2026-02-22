@@ -74,8 +74,10 @@ function render() {
       <div class="score">${player.score}</div>
       <div class="points">${visiblePoints.map(points => `<div class="points">${points}</div>`).join('')}</div>
       ${hasMore ? `<button class="history-btn" onclick="toggleHistory('${player.name}')">${expanded ? 'Ver menos' : `Ver historial (${player.points.length})`}</button>` : ''}
-      <input type="number" pattern="-?[0-9]\.?[0-9]*" inputmode="decimal" id="points-${index}" />
-      <button onclick="addPoints('${player.name}', parseInt(document.getElementById('points-${index}').value))">Add points</button>
+      <div class="player-input-row">
+        <input type="number" pattern="-?[0-9]\.?[0-9]*" inputmode="decimal" id="points-${index}" placeholder="0" />
+        <button onclick="addPoints('${player.name}', parseInt(document.getElementById('points-${index}').value))">+</button>
+      </div>
     </div>
   `
   }).join('')

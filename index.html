@@ -2,35 +2,40 @@
 <html class="no-js" lang="">
 
 <head>
-  <meta name="theme-color" content="#000000" />
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="theme-color" content="#0f0f0f" />
   <meta name="google-adsense-account" content="ca-pub-3381238987477190">
   <title>Score Keeper</title>
   <meta name="description" content="Simple counter app for counting anything.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#317EFB">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="images/icon.png">
-  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/normalize.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="add-player">
-    <div>
-      <label for="playerName">Player Name</label>
-      <input type="text" id="playerName" placeholder="Player Name" />
+  <div class="app">
+    <header class="app-header">
+      <h1 class="app-title">🏆 Score Keeper</h1>
+    </header>
+
+    <div class="add-player-section">
+      <div class="add-player-row">
+        <input type="text" id="playerName" placeholder="Nombre del jugador" autocomplete="off" />
+        <button id="addPlayer" onclick="addPlayer(document.getElementById('playerName').value)">+ Agregar</button>
+      </div>
+      <div class="danger-actions">
+        <button class="btn-ghost" onclick="clearAllPoints()">Limpiar puntos</button>
+        <button class="btn-ghost btn-danger" onclick="clearPlayers()">Borrar jugadores</button>
+      </div>
     </div>
-    <button id="addPlayer" onclick="addPlayer(
-      document.getElementById('playerName').value
-    )">Add Player</button>
-    <button id="clearPlayers" onclick="clearPlayers()">Clear Players</button>
-    <button id="clearAllPoints" onclick="clearAllPoints()">Clear All Points</button>
+
+    <div id="leaderboard"></div>
+    <div id="players"></div>
   </div>
-  <div id="leaderboard"></div>
-  <div id="players"></div>
 
   <script src="js/main.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190"
@@ -41,3 +46,4 @@
 </body>
 
 </html>
+
