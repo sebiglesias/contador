@@ -34,17 +34,50 @@ function addPoints(playerName, points) {
 }
 
 
-// Show players and their points in vertical columns, show the sum of the points at the top right beneath the player and previous points in strikethrough text, also a button to add points to the player.
+function renderLeaderboard() {
+  const top = [...players].sort((a, b) => b.score - a.score).slice(0, 3)
+  const medals = ['🥇', '🥈', '🥉']
+  const el = document.getElementById('leaderboard')
+  if (top.length === 0) { el.innerHTML = ''; return }
+  el.innerHTML = `
+    <div class="leaderboard">
+      <div class="leaderboard-title">Top 3</div>
+      ${top.map((p, i) => `
+        <div class="leaderboard-row">
+          <span class="leaderboard-medal">${medals[i]}</span>
+          <span class="leaderboard-name">${p.name}</span>
+          <span class="leaderboard-score">${p.score}</span>
+        </div>
+      `).join('')}
+    </div>
+  `
+}
+
+
+
+function toggleHistory(playerName) {
+  historyExpanded[playerName] = !historyExpanded[playerName]
+  render()
+}
+
 function render() {
-  document.getElementById('players').innerHTML = players.map((player, index) => `
+  renderLeaderboard()
+  document.getElementById('players').innerHTML = players.map((player, index) => {
+    const expanded = historyExpanded[player.name]
+    const visiblePoints = expanded ? player.points : player.points.slice(-3)
+    const hasMore = player.points.length > 3
+
+    return `
     <div class="player">
       <div class="name">${player.name}</div>
       <div class="score">${player.score}</div>
-      <div class="points">${player.points.map(points => `<div class="points">${points}</div>`).join('')}</div>
+      <div class="points">${visiblePoints.map(points => `<div class="points">${points}</div>`).join('')}</div>
+      ${hasMore ? `<button class="history-btn" onclick="toggleHistory('${player.name}')">${expanded ? 'Ver menos' : `Ver historial (${player.points.length})`}</button>` : ''}
       <input type="number" pattern="-?[0-9]\.?[0-9]*" inputmode="decimal" id="points-${index}" />
       <button onclick="addPoints('${player.name}', parseInt(document.getElementById('points-${index}').value))">Add points</button>
     </div>
-  `).join('')
+  `
+  }).join('')
 }
 
 

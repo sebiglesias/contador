@@ -267,7 +267,50 @@ textarea {
   }
 }
 
-#players {
+#leaderboard {
+  margin-bottom: 16px;
+}
+
+.leaderboard {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.leaderboard-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.leaderboard-medal {
+  font-size: 1.1rem;
+}
+
+.leaderboard-name {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.leaderboard-score {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
@@ -334,6 +377,22 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.history-btn {
+  background: none;
+  color: #888;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.history-btn:hover {
+  background: none;
+  color: #555;
+  border-color: #999;
 }
 
 #playerName {
