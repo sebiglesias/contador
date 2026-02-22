@@ -10,6 +10,26 @@ window.addEventListener('beforeinstallprompt', (e) => {
 let players = []
 let historyExpanded = {}
 
+const root = document.documentElement
+const themeToggle = document.getElementById('themeToggle')
+
+function setTheme(light) {
+  if (light) {
+    root.classList.add('light')
+    themeToggle.textContent = '🌙'
+  } else {
+    root.classList.remove('light')
+    themeToggle.textContent = '☀️'
+  }
+  localStorage.setItem('theme', light ? 'light' : 'dark')
+}
+
+function toggleTheme() {
+  setTheme(!root.classList.contains('light'))
+}
+
+setTheme(localStorage.getItem('theme') === 'light')
+
 function clearPlayers() {
   players = []
   render()

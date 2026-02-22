@@ -108,6 +108,16 @@ textarea {
   --radius-sm: 8px;
 }
 
+:root.light {
+  --bg: #f2f2f7;
+  --surface: #ffffff;
+  --surface2: #f2f2f7;
+  --border: #d1d1d6;
+  --text: #1c1c1e;
+  --text-muted: #6c6c70;
+  --danger: #ff3b30;
+}
+
 * { box-sizing: border-box; }
 
 html {
@@ -133,7 +143,10 @@ body {
 
 /* ── Header ── */
 .app-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   padding: 20px 0 8px;
 }
 
@@ -142,6 +155,27 @@ body {
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.02em;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--surface2);
 }
 
 /* ── Add player section ── */
