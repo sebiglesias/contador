@@ -8,6 +8,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 let players = []
+let historyExpanded = {}
 
 function clearPlayers() {
   players = []
