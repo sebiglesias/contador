@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#14130F"/>
+  <g stroke="rgba(242,239,230,.10)" stroke-width="1">
+    <path d="M0 90H1200M0 180H1200M0 270H1200M0 360H1200M0 450H1200M0 540H1200"/>
+    <path d="M150 0V630M300 0V630M450 0V630M600 0V630M750 0V630M900 0V630M1050 0V630"/>
+  </g>
+  <g transform="translate(900,315)">
+    <g transform="rotate(-12)"><rect x="-110" y="-150" width="170" height="240" rx="20" fill="#F2EFE6"/></g>
+    <g transform="rotate(10)"><rect x="-40" y="-150" width="170" height="240" rx="20" fill="#2BA15F"/>
+      <path d="M48 -90c18 22 42 38 42 66a42 42 0 0 1-84 0c0-28 24-44 42-66z" fill="#F2EFE6"/></g>
+  </g>
+  <text x="90" y="300" font-family="Georgia,serif" font-weight="800" font-size="86" fill="#F2EFE6" letter-spacing="-2">Anotador<tspan fill="#2BA15F">.</tspan></text>
+  <text x="92" y="360" font-family="Menlo,monospace" font-size="25" fill="#9A968B" letter-spacing="2">CONTINENTAL · TUTE · TRUCO · CHINCHÓN</text>
+</svg>

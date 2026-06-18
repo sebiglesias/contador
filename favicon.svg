@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#14130F"/>
+  <!-- dos cartas -->
+  <g transform="rotate(-12 256 256)">
+    <rect x="150" y="150" width="150" height="210" rx="18" fill="#F2EFE6"/>
+  </g>
+  <g transform="rotate(10 256 256)">
+    <rect x="210" y="150" width="150" height="210" rx="18" fill="#2BA15F"/>
+    <path d="M285 200c14 18 34 30 34 52a34 34 0 0 1-68 0c0-22 20-34 34-52z" fill="#F2EFE6"/>
+  </g>
+</svg>

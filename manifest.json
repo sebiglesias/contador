@@ -1,16 +1,16 @@
- {
-   "name": "Scoreboard",
-   "short_name": "Scoreboard",
-   "description": "A simple scoreboard for keeping track of scores in games.",
-   "icons": [
-     {
-       "src": "/images/icon.png",
-       "sizes": "48x48",
-       "type": "image/png"
-     }
-   ],
-   "start_url": "/contador",
-   "display": "fullscreen",
-   "background_color": "#fff",
-   "theme_color": "#3f51b5"
- }
+{
+  "name": "Anotador de cartas",
+  "short_name": "Anotador",
+  "description": "Marcador de puntos para Continental, Tute, Truco, Chinchón y contador libre.",
+  "start_url": "/contador/",
+  "scope": "/contador/",
+  "display": "standalone",
+  "background_color": "#14130F",
+  "theme_color": "#2BA15F",
+  "lang": "es",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

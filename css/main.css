@@ -1,609 +1,77 @@
-/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
-  font-family: 'Inter', sans-serif;
+/* Anotador de cartas — sistema de diseño de la familia (verde paño). */
+:root{
+  --ink:#14130F; --surface:#1C1B16; --hairline:rgba(242,239,230,.12);
+  --text:#F2EFE6; --muted:#9A968B; --accent:#2BA15F; --accent-ink:#0B1A11;
 }
-:root {
-  --primary: #2c3e50;
-  --accent: #e74c3c;
-  --font-size-base: 1rem;
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink); color:var(--text);
+  font-family:"JetBrains Mono",monospace; line-height:1.5;
+  background-image:
+    linear-gradient(var(--hairline) 1px,transparent 1px),
+    linear-gradient(90deg,var(--hairline) 1px,transparent 1px);
+  background-size:28px 28px;
+  min-height:100vh; padding:clamp(1rem,4vw,2.5rem);
 }
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Vendor-prefixed and regular ::selection selectors cannot be combined:
- * https://stackoverflow.com/a/16982510/7133471
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
-}
-
-/* ==========================================================================
-   Author's custom styles — modern mobile-first redesign
-   ========================================================================== */
-
-:root {
-  --bg: #0f0f0f;
-  --surface: #1a1a1a;
-  --surface2: #242424;
-  --border: #2e2e2e;
-  --text: #f0f0f0;
-  --text-muted: #888;
-  --accent: #6c63ff;
-  --accent-hover: #574fd6;
-  --danger: #ff4d4d;
-  --success: #22c55e;
-  --radius: 14px;
-  --radius-sm: 8px;
-}
-
-:root.light {
-  --bg: #f2f2f7;
-  --surface: #ffffff;
-  --surface2: #f2f2f7;
-  --border: #d1d1d6;
-  --text: #1c1c1e;
-  --text-muted: #6c6c70;
-  --danger: #ff3b30;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  background: var(--bg);
-  color: var(--text);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background: var(--bg);
-}
-
-/* ── App shell ── */
-.app {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 16px 16px 80px;
-}
-
-/* ── Header ── */
-.app-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 20px 0 8px;
-}
-
-.app-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.theme-toggle {
-  position: absolute;
-  right: 0;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.theme-toggle:hover {
-  background: var(--surface2);
-}
-
-/* ── Add player section ── */
-.add-player-section {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px;
-  margin-bottom: 16px;
-}
-
-.add-player-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.add-player-row input {
-  flex: 1;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  padding: 10px 14px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.add-player-row input:focus {
-  border-color: var(--accent);
-}
-
-.add-player-row input::placeholder {
-  color: var(--text-muted);
-}
-
-.add-player-row button {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 10px 16px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s;
-}
-
-.add-player-row button:hover {
-  background: var(--accent-hover);
-}
-
-.danger-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.btn-ghost {
-  flex: 1;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text-muted);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  padding: 7px 10px;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.btn-ghost:hover {
-  background: transparent;
-  border-color: #555;
-  color: var(--text);
-}
-
-.btn-danger {
-  color: var(--danger);
-  border-color: #3a1a1a;
-}
-
-.btn-danger:hover {
-  background: transparent;
-  border-color: var(--danger);
-  color: var(--danger);
-}
-
-/* ── Leaderboard ── */
-#leaderboard {
-  margin-bottom: 16px;
-}
-
-.leaderboard {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-}
-
-.leaderboard-title {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.leaderboard-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.leaderboard-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.leaderboard-medal { font-size: 1.1rem; }
-
-.leaderboard-name {
-  flex: 1;
-  font-size: 0.95rem;
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.leaderboard-score {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--accent);
-}
-
-/* ── Players grid ── */
-#players {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-}
-
-/* ── Player card ── */
-.player {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 14px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 100%;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.score {
-  font-size: 2.8rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--text);
-}
-
-.points {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.points > .points {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 1px 0;
-}
-
-.history-btn {
-  background: transparent;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  padding: 3px 10px;
-  cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.history-btn:hover {
-  background: transparent;
-  color: var(--text);
-  border-color: #555;
-}
-
-.player-input-row {
-  display: flex;
-  gap: 6px;
-  width: 100%;
-  margin-top: 4px;
-}
-
-.player-input-row input {
-  flex: 1;
-  min-width: 0;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  padding: 8px 10px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.player-input-row input:focus {
-  border-color: var(--accent);
-}
-
-.player-input-row button {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
-
-.player-input-row button:hover {
-  background: var(--accent-hover);
-}
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
-}
-
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
-}
-
-/*
- * Extends the .sr-only class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.sr-only.focusable:active,
-.sr-only.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: " ";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  /*
-   * Printing Tables:
-   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
-   */
-  thead {
-    display: table-header-group;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-}
-
-
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 80% at 50% 0%,transparent 55%,rgba(0,0,0,.45))}
+.wrap{max-width:620px;margin:0 auto;position:relative;z-index:1}
+h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.9rem,7vw,2.8rem);letter-spacing:-.02em;line-height:.95}
+h1 .accent{color:var(--accent)}
+.sub{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;margin:.35rem 0 0}
+section{padding:1.3rem 0;border-top:1px solid var(--hairline);margin-top:1.3rem}
+header{padding-bottom:.2rem}
+header+section{border-top:none;margin-top:1.6rem}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:.7rem}
+
+.seg{display:flex;flex-wrap:wrap;gap:.5rem}
+.seg button{padding:.6rem .9rem;border:1px solid var(--hairline);background:transparent;color:var(--muted);
+  font-family:"JetBrains Mono";font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;border-radius:2px;transition:.15s}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+
+.add-row{display:flex;gap:.5rem}
+.add-row input{flex:1;background:var(--surface);border:1px solid var(--hairline);color:var(--text);
+  font-family:"JetBrains Mono";font-size:.95rem;padding:.7rem .9rem;border-radius:2px;outline:none}
+.add-row input:focus{border-color:var(--accent)}
+.add-row button{padding:.7rem 1rem;border:1px solid var(--hairline);background:transparent;color:var(--text);
+  font-family:"JetBrains Mono";font-size:.82rem;cursor:pointer;border-radius:2px;white-space:nowrap}
+
+.players{display:flex;flex-direction:column;gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:2px;overflow:hidden;margin-top:1.3rem}
+.player{background:var(--ink);padding:1rem 1.1rem}
+.player.lead{box-shadow:inset 3px 0 0 var(--accent)}
+.player-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.pname{font-size:1.05rem;outline:none;border-bottom:1px dashed transparent}
+.pname:focus{border-bottom-color:var(--hairline)}
+.player.lead .pname{color:var(--accent)}
+.pscore{font-family:"Bricolage Grotesque";font-weight:800;font-size:2.3rem;font-variant-numeric:tabular-nums;line-height:1}
+.pscore.sm{font-size:1.5rem}
+.pscore i{font-style:normal;color:var(--muted);font-size:.55em;font-weight:500}
+/* fósforos (truco) */
+.fosforos{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-top:.75rem;min-height:38px}
+.fos-sq .sq{width:34px;height:34px;display:block}
+.fos-sq .sq path{stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;fill:none}
+.fos-div{width:1px;align-self:stretch;min-height:30px;background:var(--hairline);margin:0 .15rem}
+.hist{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;color:var(--muted);font-size:.72rem}
+.hist span{border:1px solid var(--hairline);padding:.05rem .4rem;border-radius:2px}
+.addbtns{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem;align-items:center}
+.addbtns .step{flex:none;min-width:2.8rem;height:2.4rem;border:1px solid var(--hairline);background:transparent;color:var(--text);
+  font-family:"JetBrains Mono";font-weight:500;font-size:.9rem;cursor:pointer;border-radius:2px;transition:.12s}
+.addbtns .step:active{transform:scale(.92);border-color:var(--accent);color:var(--accent)}
+.addbtns .custom{width:3.6rem;height:2.4rem;background:var(--surface);border:1px solid var(--hairline);color:var(--text);
+  font-family:"JetBrains Mono";text-align:center;border-radius:2px;outline:none}
+.addbtns .custom:focus{border-color:var(--accent)}
+.addbtns .rm{margin-left:auto;width:2.4rem;height:2.4rem;border:1px solid var(--hairline);background:transparent;color:var(--muted);cursor:pointer;border-radius:2px;font-size:1.1rem}
+
+.bar{display:flex;gap:.6rem;margin-top:1.4rem;flex-wrap:wrap}
+.bar button{flex:1;min-width:max-content;padding:.75rem 1rem;border:1px solid var(--hairline);background:transparent;color:var(--muted);
+  font-family:"JetBrains Mono";font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;border-radius:2px}
+.bar button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+
+.prose{font-size:.9rem;color:var(--muted)}
+.prose h2{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.3rem;color:var(--text);margin-bottom:.8rem;letter-spacing:-.01em}
+.prose h3{font-family:"JetBrains Mono";font-weight:700;font-size:.9rem;color:var(--text);margin:1.2rem 0 .3rem}
+.prose p{margin-bottom:.5rem;line-height:1.6}
+.prose b{color:var(--text)}
+footer{margin-top:2.4rem;padding-top:1.3rem;border-top:1px solid var(--hairline);color:var(--muted);font-size:.7rem}
+footer a{color:var(--muted)}

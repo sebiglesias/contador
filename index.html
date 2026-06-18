@@ -1,50 +1,111 @@
 <!doctype html>
-<html class="no-js" lang="">
-
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="theme-color" content="#0f0f0f" />
-  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
-  <title>Score Keeper</title>
-  <meta name="description" content="Simple counter app for counting anything.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="manifest.json">
+  <title>Anotador de cartas online — Continental, Tute, Truco, Chinchón</title>
+  <meta name="description" content="Anotador de puntos online para Truco (con cuadrados de fósforos), Continental, Tute, Chinchón, 10.000 y un contador libre. Marca quién va ganando, sin registro y sin conexión.">
+  <link rel="canonical" href="https://sebiglesias.com.ar/contador/">
+  <meta name="theme-color" content="#2BA15F">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
+  <meta name="language" content="Spanish">
+  <link rel="alternate" hreflang="es" href="https://sebiglesias.com.ar/contador/">
+  <link rel="alternate" hreflang="es-ar" href="https://sebiglesias.com.ar/contador/">
+  <link rel="alternate" hreflang="es-es" href="https://sebiglesias.com.ar/contador/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Anotador de cartas online — Continental, Tute, Truco, Chinchón">
+  <meta property="og:description" content="Lleva el marcador de tu partida de cartas. Gratis, sin registro, sin conexión.">
+  <meta property="og:url" content="https://sebiglesias.com.ar/contador/">
+  <meta property="og:image" content="https://sebiglesias.com.ar/contador/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anotador de cartas online">
+  <meta name="twitter:description" content="Marcador para Continental, Tute, Truco y Chinchón.">
+  <meta name="twitter:image" content="https://sebiglesias.com.ar/contador/og.png">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="images/icon.png">
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="app">
-    <header class="app-header">
-      <h1 class="app-title">🏆 Score Keeper</h1>
-      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Cambiar tema">☀️</button>
+  <main class="wrap">
+    <header>
+      <h1>Anotador<span class="accent">.</span></h1>
+      <p class="sub" id="modeSub">Marcador de cartas</p>
     </header>
 
-    <div class="add-player-section">
-      <div class="add-player-row">
+    <section>
+      <p class="label">Juego</p>
+      <div class="seg" id="modes"></div>
+    </section>
+
+    <section id="addSection">
+      <div class="add-row">
         <input type="text" id="playerName" placeholder="Nombre del jugador" autocomplete="off" />
-        <button id="addPlayer" onclick="addPlayer(document.getElementById('playerName').value)">+ Agregar</button>
+        <button id="addPlayer">+ Jugador</button>
       </div>
-      <div class="danger-actions">
-        <button class="btn-ghost" onclick="clearAllPoints()">Limpiar puntos</button>
-        <button class="btn-ghost btn-danger" onclick="clearPlayers()">Borrar jugadores</button>
-      </div>
+    </section>
+
+    <div id="players" class="players"></div>
+
+    <div class="bar">
+      <button id="undo">Deshacer</button>
+      <button id="reset" class="primary">Nueva partida</button>
     </div>
 
-    <div id="leaderboard"></div>
-    <div id="players"></div>
-  </div>
+    <section class="prose">
+      <h2>Anotador de cartas, sin papel ni lápiz</h2>
+      <p>Elegí el juego y llevá el marcador desde el celu: el anotador suma los puntos por mano,
+      muestra <b>quién va ganando</b> en vivo y avisa cuando alguien llega al objetivo o se pasa del
+      límite. Funciona sin conexión y guarda la partida aunque recargues.</p>
+
+      <h3>¿Cómo se cuentan los puntos del Continental?</h3>
+      <p>El Continental se juega a varias manos y <b>gana quien menos puntos suma</b>: cada carta que
+      te queda en la mano vale puntos (las figuras más), así que el anotador acumula y te marca el de
+      menor total como puntero.</p>
+
+      <h3>¿Cómo se anota el Truco?</h3>
+      <p>El Truco se anota por equipos (Nosotros / Ellos) a <b>30 puntos</b> (15 malas y 15 buenas).
+      Usá los botones rápidos +1 / +2 / +3 y el anotador avisa cuando un equipo llega a 30.</p>
+
+      <h3>¿Cómo se juega al Chinchón?</h3>
+      <p>En el Chinchón se suman los puntos de las cartas que quedan en la mano y <b>el que llega al
+      límite (100 por defecto) queda eliminado</b>; gana el de menos puntos. El anotador marca al que
+      se pasa.</p>
+
+      <h3>¿Cómo se anota el 10.000?</h3>
+      <p>En el 10.000 (juego de dados) cada jugador acumula los puntos de sus tiradas y <b>gana el
+      primero en llegar a 10.000</b>. Usá los botones rápidos (+50, +100, +500) o escribí el puntaje
+      de la tirada, y el anotador avisa cuando alguien llega.</p>
+    </section>
+
+    <footer>
+      Hecho por <a href="https://sebiglesias.com.ar">sebiglesias</a> · Marcador para tus partidas.
+    </footer>
+  </main>
 
   <script src="js/main.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190"
-          crossorigin="anonymous"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Anotador de cartas","url":"https://sebiglesias.com.ar/contador/","description":"Anotador de puntos online para Continental, Tute, Truco, Chinchón y un contador libre.","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"¿Cómo se cuentan los puntos del Continental?","acceptedAnswer":{"@type":"Answer","text":"Se juega a varias manos y gana quien menos puntos suma. Cada carta que queda en la mano vale puntos, las figuras más. El anotador acumula y marca al de menor total como puntero."}},
+  {"@type":"Question","name":"¿Cómo se anota el Truco?","acceptedAnswer":{"@type":"Answer","text":"Por equipos (Nosotros y Ellos) a 30 puntos: 15 malas y 15 buenas. Se suman de a 1, 2 o 3 puntos y gana el primero que llega a 30."}},
+  {"@type":"Question","name":"¿Cómo se juega al Chinchón?","acceptedAnswer":{"@type":"Answer","text":"Se suman los puntos de las cartas que quedan en la mano y quien llega al límite (100 por defecto) queda eliminado. Gana el jugador con menos puntos."}},
+  {"@type":"Question","name":"¿Cómo se anota el 10.000?","acceptedAnswer":{"@type":"Answer","text":"En el juego de dados 10.000 cada jugador acumula los puntos de sus tiradas y gana el primero en llegar a 10.000 puntos."}}]}
+  </script>
+
+  <script data-goatcounter="https://xebox.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
